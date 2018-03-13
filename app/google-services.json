@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "819857248856",
+    "firebase_url": "https://sketchtaku-e41fc.firebaseio.com",
+    "project_id": "sketchtaku-e41fc",
+    "storage_bucket": "sketchtaku-e41fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819857248856:android:2cf2ecab7766358d",
+        "android_client_info": {
+          "package_name": "com.example.laptop.sketchtaku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819857248856-lmvi3e15g7s9ogekvllvg3q18at4dhpo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.laptop.sketchtaku",
+            "certificate_hash": "4bd02d0a1f7101fc85a1673ff7e7dbe43e6dc31f"
+          }
+        },
+        {
+          "client_id": "819857248856-d64ogo241tmlhk1a3qeejvml2u04fhv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKpKF3oghy-S9D9bSiHG92USbCno_oPsY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819857248856-d64ogo241tmlhk1a3qeejvml2u04fhv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
