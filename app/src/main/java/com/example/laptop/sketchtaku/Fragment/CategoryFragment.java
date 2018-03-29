@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.laptop.sketchtaku.Common.Common;
+import com.example.laptop.sketchtaku.GridSpacingItemDecoration;
 import com.example.laptop.sketchtaku.Model.CategoryItem;
 import com.example.laptop.sketchtaku.R;
 import com.example.laptop.sketchtaku.ViewHolder.CategoryViewHolder;
@@ -125,8 +126,11 @@ public class CategoryFragment extends Fragment {
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        int spanCount = 2; // 3 columns
+        int spacing = 30; // 50px
+        boolean includeEdge = false;
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
         recyclerView.setLayoutManager(gridLayoutManager);
-
         setCategory();
         return view;
 
