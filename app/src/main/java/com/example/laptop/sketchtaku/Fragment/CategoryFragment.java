@@ -1,6 +1,7 @@
 package com.example.laptop.sketchtaku.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 
 import com.example.laptop.sketchtaku.Common.Common;
 import com.example.laptop.sketchtaku.GridSpacingItemDecoration;
+import com.example.laptop.sketchtaku.Interface.ItemClickListener;
+import com.example.laptop.sketchtaku.ListWallpaper;
 import com.example.laptop.sketchtaku.Model.CategoryItem;
 import com.example.laptop.sketchtaku.R;
 import com.example.laptop.sketchtaku.ViewHolder.CategoryViewHolder;
@@ -90,6 +93,16 @@ public class CategoryFragment extends Fragment {
                         });
 
                 holder.category_name.setText(model.getName());
+
+                holder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position) {
+                        Common.CATEGORY_ID_SELECTED = adapter.getRef(position).getKey();
+                        Common.CATEGORY_SELECTED = model.getName();
+                        Intent intent = new Intent(getActivity(), ListWallpaper.class);
+                        startActivity(intent);
+                    }
+                });
 
 
             }
