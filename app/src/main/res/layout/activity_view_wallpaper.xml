@@ -30,8 +30,9 @@
             <ImageView
                 android:id="@+id/WAllThumb"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:layout_height="500dp"
+                android:src="@drawable/draw"
+                android:scaleType="fitCenter" />
 
 
             <android.support.v7.widget.Toolbar

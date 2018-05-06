@@ -14,4 +14,5 @@ public class Common {
     public static  final  int  PERMISSION_REQUEST_CODE= 1000;
 
     public static WallpaperItem select_background = new WallpaperItem();
+    public static final int SIGN_IN_REQ_CODE = 1001;
 }
