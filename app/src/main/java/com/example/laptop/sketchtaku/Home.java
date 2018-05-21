@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -37,6 +38,7 @@ public class Home extends AppCompatActivity
     TabLayout tabLayout;
     DrawerLayout drawer;
     NavigationView navigationView;
+    BottomNavigationView menu_bottom;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -87,6 +89,20 @@ public class Home extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Sketchtaku");
         setSupportActionBar(toolbar);
+
+        menu_bottom = (BottomNavigationView)findViewById(R.id.navigation);
+        menu_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.upload)
+                {
+                    startActivity(new Intent(Home.this,Upload_Activity.class));
+
+                }
+                return false;
+            }
+        });
+
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

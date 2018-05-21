@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,13 +28,16 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
+
+
             <ImageView
+                android:layout_below="@id/toolbar"
+                android:paddingTop="8dp"
                 android:id="@+id/WAllThumb"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:src="@drawable/draw"
-                android:scaleType="fitCenter" />
-
+                android:layout_height="430dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/draw" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -46,9 +50,39 @@
 
             </android.support.v7.widget.Toolbar>
 
+
+
+
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
-    </android.support.design.widget.AppBarLayout>
+</android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/downlaodwall"
+        android:layout_marginRight="30dp"
+        app:elevation="6dp"
+        android:src="@drawable/ic_terrain_black_24dp"
+        app:pressedTranslationZ="12dp"
+        app:layout_anchor="@id/app_bar_layout"
+        app:layout_anchorGravity="bottom|right|end"
+        app:backgroundTint="@android:color/white"/>
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/downlaodwallpaper"
+        android:layout_marginLeft="30dp"
+        app:elevation="6dp"
+        android:src="@drawable/ic_file_download_black_24dp"
+        app:pressedTranslationZ="12dp"
+        app:layout_anchor="@id/app_bar_layout"
+        app:layout_anchorGravity="bottom|left|start"
+        app:backgroundTint="@android:color/white"/>
 
     <android.support.v4.widget.NestedScrollView
         android:clipToPadding="false"
@@ -86,28 +120,7 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/downlaodwall"
-    android:layout_marginRight="30dp"
-    app:elevation="6dp"
-    android:src="@drawable/ic_terrain_black_24dp"
-    app:pressedTranslationZ="12dp"
-    app:layout_anchor="@id/app_bar_layout"
-    app:layout_anchorGravity="bottom|right|end"
-    app:backgroundTint="@android:color/white"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/downlaodwallpaper"
-        android:layout_marginLeft="30dp"
-        app:elevation="6dp"
-        android:src="@drawable/ic_file_download_black_24dp"
-        app:pressedTranslationZ="12dp"
-        app:layout_anchor="@id/app_bar_layout"
-        app:layout_anchorGravity="bottom|left|start"
-        app:backgroundTint="@android:color/white"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

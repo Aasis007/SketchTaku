@@ -1,6 +1,7 @@
 package com.example.laptop.sketchtaku;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.laptop.sketchtaku.Common.Common;
 import com.example.laptop.sketchtaku.Interface.ItemClickListener;
@@ -19,6 +23,7 @@ import com.example.laptop.sketchtaku.Model.WallpaperItem;
 import com.example.laptop.sketchtaku.ViewHolder.ListWallpaperViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Callback;
@@ -33,10 +38,16 @@ public class ListWallpaper extends AppCompatActivity {
     RecyclerView recyclerView;
 
 
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_wallpaper);
+
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(Common.CATEGORY_SELECTED);
@@ -45,14 +56,30 @@ public class ListWallpaper extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
         recyclerView = (RecyclerView)findViewById(R.id.recycler_list_wallpaper);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+
+
+
+
         LoadBackgroundList();
 
+
+
+
+
+
     }
+
+
+
+
+
+
 
     private void LoadBackgroundList() {
         query = FirebaseDatabase.getInstance().getReference(Common.STR_WALLPAPER)
@@ -63,9 +90,16 @@ public class ListWallpaper extends AppCompatActivity {
                 .build();
 
 
+
+
+
         adapter = new FirebaseRecyclerAdapter<WallpaperItem, ListWallpaperViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final ListWallpaperViewHolder holder, int position, @NonNull final WallpaperItem model) {
+
+
+
+
 
                 Picasso.with(getBaseContext())
                         .load(model.getUrl())
@@ -129,6 +163,9 @@ public class ListWallpaper extends AppCompatActivity {
 
     }
 
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -138,10 +175,10 @@ public class ListWallpaper extends AppCompatActivity {
 
 
     @Override
-    public void onStop() {
-        if (adapter !=null)
-            adapter.stopListening();
-        super.onStop();
+    protected void onDestroy() {
+        if (adapter != null)
+            adapter.startListening();
+        super.onDestroy();
     }
 
     @Override
@@ -149,6 +186,7 @@ public class ListWallpaper extends AppCompatActivity {
         super.onResume();
         if (adapter!=null)
             adapter.startListening();
+
     }
 
     @Override

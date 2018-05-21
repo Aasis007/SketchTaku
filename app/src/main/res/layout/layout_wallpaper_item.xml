@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+
+<RelativeLayout
+    android:layout_height="370dp"
+    android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.CardView
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:elevation="4dp">
+
+
+        <LinearLayout
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/User_img"
+                android:paddingTop="4dp"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_gravity="start"
+                android:src="@drawable/yes" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:paddingTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+<android.support.v7.widget.CardView
+    android:layout_marginTop="40dp"
     android:layout_width="wrap_content"
-    android:layout_height="360dp"
+    android:layout_height="380dp"
     app:cardElevation="4dp"
     app:cardCornerRadius="4dp"
     android:padding="3dp"
@@ -23,12 +65,15 @@
             android:id="@+id/bkrImage"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/draw"
-
-             />
+            android:layout_height="380dp"
+            android:src="@drawable/draw"/>
 
 
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
+</RelativeLayout>
+
+
+
+
