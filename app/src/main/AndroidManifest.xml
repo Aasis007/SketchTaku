@@ -28,11 +28,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ListWallpaper"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewWallpaper"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Upload_Activity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Upload_Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

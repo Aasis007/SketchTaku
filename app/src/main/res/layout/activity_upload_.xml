@@ -22,12 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp" />
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:id="@+id/spinner"
-            android:scrollbars="vertical"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -60,7 +54,32 @@
                 android:layout_height="wrap_content" />
 
 
+
+
         </LinearLayout>
+
+
+<LinearLayout
+    android:layout_marginTop="40dp"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical"
+        app:ms_dropdown_max_height="400dp"
+        app:ms_dropdown_height="wrap_content"/>
+
+
+</LinearLayout>
+
+
 
     </LinearLayout>
 

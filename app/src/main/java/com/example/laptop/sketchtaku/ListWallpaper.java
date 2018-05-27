@@ -23,6 +23,8 @@ import com.example.laptop.sketchtaku.Model.WallpaperItem;
 import com.example.laptop.sketchtaku.ViewHolder.ListWallpaperViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -36,7 +38,7 @@ public class ListWallpaper extends AppCompatActivity {
     FirebaseRecyclerAdapter<WallpaperItem,ListWallpaperViewHolder> adapter;
 
     RecyclerView recyclerView;
-
+    private AdView myadview;
 
 
 
@@ -47,6 +49,10 @@ public class ListWallpaper extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_wallpaper);
+
+        myadview = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        myadview.loadAd(adRequest);
 
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);

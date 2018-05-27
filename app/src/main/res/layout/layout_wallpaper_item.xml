@@ -11,7 +11,8 @@
         android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:id="@+id/cardView">
 
 
         <LinearLayout
@@ -56,6 +57,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="3dp"
@@ -71,8 +73,15 @@
 
     </RelativeLayout>
 
+
 </android.support.v7.widget.CardView>
+
+
+
 </RelativeLayout>
+
+
+
 
 
 

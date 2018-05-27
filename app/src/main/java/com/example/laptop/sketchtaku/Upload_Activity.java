@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.laptop.sketchtaku.Common.Common;
@@ -64,7 +65,7 @@ public class Upload_Activity extends AppCompatActivity {
         imagepreview = (ImageView)findViewById(R.id.image_preview);
         browsebtn = (Button)findViewById(R.id.selectbtn);
         uploadbtn = (Button)findViewById(R.id.uploadbtn);
-        spinner = (MaterialSpinner)findViewById(R.id.spinner);
+        spinner = (MaterialSpinner) findViewById(R.id.spinner);
         //load spinner data
         loadcategoryspinner();
 
