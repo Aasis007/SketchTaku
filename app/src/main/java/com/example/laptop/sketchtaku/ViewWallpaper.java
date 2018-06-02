@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,20 +25,25 @@ import android.widget.Toast;
 
 
 import com.example.laptop.sketchtaku.Common.Common;
+
 import com.example.laptop.sketchtaku.Helper.Saveimagehelper;
 import com.example.laptop.sketchtaku.Model.WallpaperItem;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.io.IOException;
+import java.util.Observable;
 import java.util.UUID;
 
 import dmax.dialog.SpotsDialog;
 
+
 public class ViewWallpaper extends AppCompatActivity {
 
     CollapsingToolbarLayout collapsingToolbarLayout;
-    FloatingActionButton floatingActionButton,fabdownlaod;
+    FloatingActionButton floatingActionButton, fabdownlaod;
     CoordinatorLayout rootlayout;
     ImageView imageView;
 
@@ -45,13 +51,10 @@ public class ViewWallpaper extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode)
-        {
-            case Common.PERMISSION_REQUEST_CODE:
-            {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                {
-                   SpotsDialog dialog = new SpotsDialog(ViewWallpaper.this);
+        switch (requestCode) {
+            case Common.PERMISSION_REQUEST_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    SpotsDialog dialog = new SpotsDialog(ViewWallpaper.this);
                     dialog.show();
                     dialog.setMessage("please wait...");
 
@@ -64,10 +67,8 @@ public class ViewWallpaper extends AppCompatActivity {
                                     getApplicationContext().getContentResolver(),
                                     filename,
                                     "SketchTaku"));
-                }
-                else
-                {
-                    Toast.makeText(this,"Please grant permimssion for external storage",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Please grant permimssion for external storage", Toast.LENGTH_SHORT).show();
                 }
                 break;
             }
@@ -83,9 +84,9 @@ public class ViewWallpaper extends AppCompatActivity {
             WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
             try {
                 wallpaperManager.setBitmap(bitmap);
-                Snackbar.make(rootlayout, "Wallpaper was set",Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(rootlayout, "Wallpaper was set", Snackbar.LENGTH_SHORT).show();
 
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
 
             }
@@ -101,31 +102,33 @@ public class ViewWallpaper extends AppCompatActivity {
 
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_wallpaper);
 
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() !=null)
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //Initialize items
-        rootlayout = (CoordinatorLayout)findViewById(R.id.rootlayout);
-        collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing);
+        rootlayout = (CoordinatorLayout) findViewById(R.id.rootlayout);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsedAppbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppBAr);
         collapsingToolbarLayout.setTitle(Common.CATEGORY_SELECTED);
-        imageView = (ImageView)findViewById(R.id.WAllThumb);
+        imageView = (ImageView) findViewById(R.id.WAllThumb);
 
         Picasso.with(this)
                 .load(Common.select_background.getUrl())
                 .into(imageView);
 
-        floatingActionButton = (FloatingActionButton)findViewById(R.id.downlaodwall);
+
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.downlaodwall);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,7 +141,7 @@ public class ViewWallpaper extends AppCompatActivity {
         });
 
 
-        fabdownlaod = (FloatingActionButton)findViewById(R.id.downlaodwallpaper);
+        fabdownlaod = (FloatingActionButton) findViewById(R.id.downlaodwallpaper);
         fabdownlaod.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -148,17 +151,13 @@ public class ViewWallpaper extends AppCompatActivity {
                         android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
                     requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, Common.PERMISSION_REQUEST_CODE);
-                }
-
-
-
-                    else {
+                } else {
 
                     AlertDialog dialog = new SpotsDialog(ViewWallpaper.this);
                     dialog.show();
                     dialog.setMessage("Please Wait...");
 
-                    String filename = UUID.randomUUID().toString()+".png";
+                    String filename = UUID.randomUUID().toString() + ".png";
                     Picasso.with(getBaseContext())
                             .load(Common.select_background.getUrl())
                             .into(new Saveimagehelper(getBaseContext(),
@@ -173,17 +172,6 @@ public class ViewWallpaper extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    protected void onDestroy() {
-        Picasso.with(this).cancelRequest(target);
-        super.onDestroy();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
-    }
 }
+
+

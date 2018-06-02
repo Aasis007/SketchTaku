@@ -99,9 +99,16 @@ public class Home extends AppCompatActivity
                     startActivity(new Intent(Home.this,Upload_Activity.class));
 
                 }
+
+
+                if (item.getItemId() == R.id.action_news)
+                {
+                    startActivity(new Intent(Home.this,Newstab.class));
+                }
                 return false;
             }
         });
+
 
 
 

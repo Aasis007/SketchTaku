@@ -32,10 +32,11 @@
         <activity
             android:name=".ViewWallpaper"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Upload_Activity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+        <activity
+            android:name=".Upload_Activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Newstab"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

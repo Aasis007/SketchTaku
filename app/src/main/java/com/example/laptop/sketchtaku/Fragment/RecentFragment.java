@@ -13,18 +13,17 @@ import com.example.laptop.sketchtaku.R;
  * A simple {@link Fragment} subclass.
  */
 public class RecentFragment extends Fragment {
-    private static RecentFragment INSTANCE=null;
+    private static MostPopularFragment INSTANCE=null;
 
 
     public RecentFragment() {
         // Required empty public constructor
     }
 
-
-    public static RecentFragment getInstance()
+    public static MostPopularFragment getInstance()
     {
         if (INSTANCE == null)
-            INSTANCE = new RecentFragment();
+            INSTANCE = new MostPopularFragment();
         return INSTANCE;
     }
 
@@ -33,7 +32,7 @@ public class RecentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recent, container, false);
+        return inflater.inflate(R.layout.fragment_most_popular, container, false);
     }
 
 }
